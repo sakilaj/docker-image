@@ -1,0 +1,4 @@
+#!/usr/bin/env python3
+
+from docker_image.cli import __main__
+__main__.main()
