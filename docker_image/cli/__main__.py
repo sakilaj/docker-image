@@ -4,8 +4,8 @@ from docker_image import reader
 
 
 def main():
-    p = argparse.ArgumentParser()
-    p.add_argument('-f', '--file', default='docker-compose.yml')
+    p = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    p.add_argument('-f', '--file', default='docker-compose.yml', help='docker-compose file')
     p.add_argument('-t', '--tags', action='append', default=['latest'])
     p.add_argument('-L', '--dont-tag-latest', action='store_true')
     p.add_argument('command', choices=['build', 'push', 'pull'])
