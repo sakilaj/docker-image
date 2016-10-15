@@ -4,7 +4,14 @@ from docker_image import reader
 
 
 def main():
-    p = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    description="""
+Simple utility for building-pulling-pushing docker images with multiple tags.
+"""
+    p = argparse.ArgumentParser(
+        description=description,
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+        prog='docker-image',
+    )
     p.add_argument('-f', '--file', default='docker-compose.yml', help='docker-compose file')
     p.add_argument('-t', '--tags', action='append', default=['latest'])
     p.add_argument('-L', '--dont-tag-latest', action='store_true')
