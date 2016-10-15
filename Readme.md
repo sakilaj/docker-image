@@ -8,8 +8,8 @@ python3 setup.py install
 
 # Command line options
 ```bash
-docker-image -h
-usage: __main__.py [-h] [-f FILE] [-t TAGS] [-L]
+$ docker-image -h
+usage: docker-image [-h] [-f FILE] [-t TAGS] [-L]
                    {build,push,pull} [services [services ...]]
 
 positional arguments:
@@ -28,5 +28,5 @@ optional arguments:
 # Build service1 described in docker-compose.service1.yml
 # Add tags `0.0.1`, `testing`, `latest`
 # Use `-L` options to remove `latest` tag
-docker-image -f docker-compose.service1.yml  -t 0.0.1 -t testing build service1
+$ docker-image -f docker-compose.service1.yml  -t 0.0.1 -t testing build service1
 ```
