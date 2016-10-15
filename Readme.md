@@ -9,7 +9,7 @@ python3 setup.py install
 # Command line options
 ```bash
 docker-image -h
-usage: __main__.py [-h] [-f FILE] [-t TAGS] [-L]
+usage: docker-image [-h] [-f FILE] [-t TAGS] [-L]
                    {build,push,pull} [services [services ...]]
 
 positional arguments:
