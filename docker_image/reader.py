@@ -7,7 +7,6 @@ from docker_image.service import Service
 
 
 def _read_service(name: str, compose_dir: str, service_desc: Dict[str, Any])->Service:
-    build_desc = service_desc.get('build', {})
     image_url = service_desc['image']  # type: str
 
     if '/' in image_url:
@@ -21,8 +20,13 @@ def _read_service(name: str, compose_dir: str, service_desc: Dict[str, Any])->Se
     else:
         image_name = name_tag
 
-    context_dir = join(compose_dir, build_desc.get('context', '.'))
-    docker_file = join(compose_dir, build_desc.get('dockerfile', 'Dockerfile'))
+    build_desc = service_desc.get('build', {})
+    if isinstance(build_desc, str):
+        context_dir = build_desc
+        docker_file = 'Dockerfile'
+    else:
+        context_dir = join(compose_dir, build_desc.get('context', '.'))
+        docker_file = join(compose_dir, build_desc.get('dockerfile', 'Dockerfile'))
     return Service(
         name=name,
         context_dir=context_dir,
